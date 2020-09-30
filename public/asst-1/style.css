@@ -1,0 +1,32 @@
+html, body{
+margin: 0;
+padding:0 ;
+}
+
+html{
+font-size: 10px;
+}
+
+body{
+width: 70%
+min-width:880px;
+margin: 0, auto;
+background-color: #162626;
+}
+
+h1, h2{
+font-family: ‘playfair display’;
+color: ‘#F0F0F2’;
+}
+
+p {
+font-family: ‘playfair display’;
+color: ‘#F0F0F2’;
+font-size: 1.7rem;
+}
+
+li{
+font-family: ‘playfair display’;
+color: ‘#F0F0F2’;
+font-size: 1.7rem;
+}
