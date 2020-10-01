@@ -16,14 +16,21 @@ display: flex;
  color:#162626;
 }
 
-.wrapper{
+.wrapper img {
   display: flex;
+ justify-content: flex-start;
+}
+
+.wrapper p {
+  display: flex;
+ justify-content: flex-end;
+ color: #162626; 
 }
 
 .wrapper h1, h2{
   color:#162626;
 }
 
-.wrapper p, li{
+.wrapper li{
   color:#162626;
 }
