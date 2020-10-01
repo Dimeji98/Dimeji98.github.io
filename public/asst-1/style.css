@@ -11,9 +11,13 @@ body{
 width: 70%
 min-width:880px;
 margin: 0, auto;
-background-color: #162626;
+background-color: #37A6A6;
 }
 
-h1 {
+h1, h2 {
+  color:#F0F0F2;
+}
+
+p{
   color:#F0F0F2;
 }
