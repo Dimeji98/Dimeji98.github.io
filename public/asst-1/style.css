@@ -4,20 +4,33 @@ body{
 
 .header {
 display: flex;
+ justify-content: flex-start;
+}
+
+.header img {
+display: flex;
+ justify-content: flex-end;
 }
 
 .header h1 {
- color:#F0F0F2;
+ color:#162626;
 }
 
-.wrapper{
+.wrapper img {
   display: flex;
+ justify-content: flex-start;
+}
+
+.wrapper p {
+  display: flex;
+ justify-content: flex-end;
+ color: #162626; 
 }
 
 .wrapper h1, h2{
-  color:#F0F0F2;
+  color:#162626;
 }
 
-.wrapper p, li{
-  color:#F0F0F2;
+.wrapper li{
+  color:#162626;
 }
