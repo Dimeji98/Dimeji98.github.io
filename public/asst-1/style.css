@@ -4,10 +4,16 @@ body{
 
 .header {
 display: flex;
+ justify-content: flex-start;
+}
+
+.header img {
+display: flex;
+ justify-content: flex-end;
 }
 
 .header h1 {
- color:#F0F0F2;
+ color:#162626;
 }
 
 .wrapper{
@@ -15,9 +21,9 @@ display: flex;
 }
 
 .wrapper h1, h2{
-  color:#F0F0F2;
+  color:#162626;
 }
 
 .wrapper p, li{
-  color:#F0F0F2;
+  color:#162626;
 }
