@@ -1,4 +1,4 @@
-{
+4{
   "name": "inst377-fa2020",
   "version": "1.0.0",
   "description": "Repository for INST377 Dynamic Web Applications Fall 2020 at UMD",
@@ -17,15 +17,6 @@
   "dependencies": {
     "express": "^4.17.1",
     "node-fetch": "^2.6.1",
-<<<<<<< HEAD
-    "nodemon": "^2.0.4",
-    "npx": "^10.2.2",
-    "open": "^7.2.1"
-  },
-  "devDependencies": {
-    "chalk": "^4.1.0",
-    "cypress": "^5.3.0",
-=======
     "dotenv": "^8.2.0",
     "recursive-readdir": "^2.2.2",
     "chalk": "^4.1.0",
@@ -35,7 +26,6 @@
     "email-validator": "^2.0.4",
     "html-validate": "^3.0.0",
     "cypress": "^4.12.1",
->>>>>>> 25aea25efc2b2c47c2a185b743f71a181e731fb6
     "cypress-html-validate": "^1.2.2",
     "cypress-wait-until": "^1.7.1",
     "dotenv": "^8.2.0",
