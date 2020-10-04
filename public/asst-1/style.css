@@ -27,19 +27,24 @@ margin-left: auto;
  align-items: center;
  text-align: center;
 }
+.container img {
+  border-radius: 4px;
+  border-width: 1px;
+}
 .container{
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   align-items: flex-start;
   justify-content: center;
+  justify-content: space-between;
   
 
 }
 
 .content{
   flex: 0 1 auto;
-  margin-right: 0px;
+  margin-right: 15px;
 }
 /*
 .wrapper img {
