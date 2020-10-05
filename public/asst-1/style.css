@@ -1,84 +1,79 @@
 body{
- background-color: lightcoral; 
-
-font-family: 'Montserrat', sans-serif;
-
-}
-
-.header {
- width: 100%;
- height: 250px;
- display: flex;
- background-color: darkred;
- border: 2px solid;
- margin-bottom: 15px;
- flex-direction: row;
- padding: 15px;
- flex-wrap: wrap;
- align-items: center;
-}
-
-.header img {
-display: flex;
-justify-content: flex-end;
-margin-left: auto;
-width: 100px;
-height: 100px;
-}
-
-.header h1 {
- font-family: 'Baloo Tammudu 2', cursive;
- color:#162626;
- justify-content: flex-start;
- align-items: center;
- text-align: center;
+  background-color: lightcoral; 
  
-}
-.container img {
-  border-radius: 4px;
-  border-width: 1px;
-}
-.container{
+ font-family: 'Montserrat', sans-serif;
+ 
+ }
+ 
+ .header {
+  width: 100%;
+  height: 250px;
   display: flex;
+  background-color: darkred;
+  border: 2px solid;
+  margin-bottom: 15px;
   flex-direction: row;
+  padding: 15px;
   flex-wrap: wrap;
-  align-items: flex-start;
-  justify-content: center;
-  justify-content: space-between;
-}
-
-.container h1, h2, p {
-
-font-family: 'Montserrat', sans-serif;
-Color: #162626;
-}
-
-
-.content{
-  flex: 0 1 auto;
-  margin-right: 15px;
-}
-
-/*
-.wrapper img {
-  display: flex;
+  align-items: center;
+ }
+ 
+ .header img {
+ display: flex;
  justify-content: flex-end;
-}
-
-.wrapper p {
- font-family: 'Cinzel Decorative', cursive;
-  display: flex;
- justify-content: flex-end;
- color: #162626; 
-}
-
-.wrapper h1, h2{
- font-family: 'Cinzel Decorative', cursive;
+ margin-left: auto;
+ }
+ 
+ .header h1 {
+  font-family: 'Baloo Tammudu 2', cursive;
   color:#162626;
-}
-
-.wrapper li{
- font-family: 'Cinzel Decorative', cursive;
-  color:#162626;
-}
-*/
+  justify-content: flex-start;
+  align-items: center;
+  text-align: center;
+  
+ }
+ .container img {
+   border-radius: 4px;
+   border-width: 1px;
+ }
+ .container{
+   display: flex;
+   flex-direction: row;
+   flex-wrap: wrap;
+   align-items: flex-start;
+   justify-content: center;
+   justify-content: space-between;
+ }
+ 
+ .container h1, h2, p {
+ 
+ font-family: 'Montserrat', sans-serif;
+ Color: #162626;
+ }
+ 
+ 
+ .content{
+   flex: 0 1 auto;
+   margin-right: 15px;
+ }
+ 
+ /*
+ .wrapper img {
+   display: flex;
+  justify-content: flex-end;
+ }
+ .wrapper p {
+  font-family: 'Cinzel Decorative', cursive;
+   display: flex;
+  justify-content: flex-end;
+  color: #162626; 
+ }
+ .wrapper h1, h2{
+  font-family: 'Cinzel Decorative', cursive;
+   color:#162626;
+ }
+ .wrapper li{
+  font-family: 'Cinzel Decorative', cursive;
+   color:#162626;
+ }
+ */
