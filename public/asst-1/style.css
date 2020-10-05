@@ -20,6 +20,7 @@ font-family: 'Montserrat', sans-serif;
 
 .header img {
 display: flex;
+justify-content: flex-end;
 margin-left: auto;
 }
 
@@ -29,6 +30,7 @@ margin-left: auto;
  justify-content: flex-start;
  align-items: center;
  text-align: center;
+ border: 1px solid;
 }
 .container img {
   border-radius: 4px;
