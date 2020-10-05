@@ -22,6 +22,8 @@ font-family: 'Montserrat', sans-serif;
 display: flex;
 justify-content: flex-end;
 margin-left: auto;
+width: 100px;
+height: 100px;
 }
 
 .header h1 {
