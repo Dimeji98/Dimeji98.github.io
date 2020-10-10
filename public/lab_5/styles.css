@@ -6,12 +6,17 @@ body {
 .flex-outer {
     max-width: 800px;
     padding: 0px 16px;
+    
 }
+ button{
+     margin-right: 10px;
+ }
 
 .flex-outer li label{
-    flex: 1 0 225px;
+    flex: 1 0 125px;
     padding: 8px;
     max-width: 225px;
+    margin: 0 auto;
 }
 .flex-inner{
     display: flex;
@@ -39,7 +44,7 @@ body {
 
 
 .flex-inner li{
-    width: 80px;
+    width: 95px;
 }
 
 .flex-outer li {
