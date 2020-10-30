@@ -1,19 +1,39 @@
-function convertRestaurantsToCategories(restaurantList) {
+function convertRestaurantsToCategories(RestaurantsList) {
   // process your restaurants here!
-  return list;
+    const newDataShape = RestaurantsList.reduce((collection, item, i) => {
+    // for each item, check if we have a category for that item already
+    const findCat = collection.find((findItem) => findItem.label === item.category);
+    
+    if (!findCat) {
+      collection.push({
+        label: item.category,
+        y: 1
+      });
+    } else {
+      const position = collection.findIndex(el => el.label === item.category);
+      collection[position].y += 1;
+    }
+    return collection;
+  }, []);
+  console.log(RestaurantsList);
+  console.log(newDataShape);
 }
 
-function makeYourOptionsObject(datapointsFromRestaurantsList) {
+function makeYourOptionsObject(data) {
   // set your chart configuration here!
+  
   CanvasJS.addColorSet('customColorSet1', [
     // add an array of colors here https://canvasjs.com/docs/charts/chart-options/colorset/
-  ]);
-
-  return {
+    "#2F4F4F",
+    "#008080",
+    "#2E8B57",
+    "#3CB371",
+    "#90EE90" ]);
+const chart = new CanvasJS.Chart("chartContainer", {
     animationEnabled: true,
     colorSet: 'customColorSet1',
     title: {
-      text: 'Change This Title'
+      text: 'Places to Eat Out'
     },
     axisX: {
       interval: 1,
@@ -22,26 +42,26 @@ function makeYourOptionsObject(datapointsFromRestaurantsList) {
     axisY2: {
       interlacedColor: 'rgba(1,77,101,.2)',
       gridColor: 'rgba(1,77,101,.1)',
-      title: 'Change This Title',
+      title: 'Restaurants by Category',
       labelFontSize: 12,
-      scaleBreaks: {customBreaks: []} // Add your scale breaks here https://canvasjs.com/docs/charts/chart-options/axisy/scale-breaks/custom-breaks/
+      scaleBreaks: {customBreaks: [{startValue: 40 , endValue: 50},{startValue: 85 , endValue: 100},{startValue: 140 , endValue: 175}]} // Add your scale breaks here https://canvasjs.com/docs/charts/chart-options/axisy/scale-breaks/custom-breaks/
     },
     data: [{
       type: 'bar',
       name: 'restaurants',
       axisYType: 'secondary',
-      dataPoints: datapointsFromRestaurantsList
+      dataPoints: data
     }]
-  };
+  });
 }
 
-function runThisWithResultsFromServer(jsonFromServer) {
+function runThisWithResultsFromServer(results) {
   console.log('jsonFromServer', jsonFromServer);
   sessionStorage.setItem('restaurantList', JSON.stringify(jsonFromServer)); // don't mess with this, we need it to provide unit testing support
   // Process your restaurants list
   // Make a configuration object for your chart
   // Instantiate your chart
-  const reorganizedData = convertRestaurantsToCategories(jsonFromServer);
+  const reorganizedData = convertRestaurantsToCategories(results);
   const options = makeYourOptionsObject(reorganizedData);
   const chart = new CanvasJS.Chart('chartContainer', options);
   chart.render();
@@ -64,3 +84,4 @@ document.body.addEventListener('submit', async (e) => {
       console.log(err);
     });
 });
+
