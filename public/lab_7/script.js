@@ -1,6 +1,6 @@
-function convertRestaurantsToCategories(RestaurantsList) {
+function convertRestaurantsToCategories(restaurantList) {
   // process your restaurants here!
-    const newDataShape = RestaurantsList.reduce((collection, item, i) => {
+    const newDataShape = restaurantList.reduce((collection, item, i) => {
     // for each item, check if we have a category for that item already
     const findCat = collection.find((findItem) => findItem.label === item.category);
     
@@ -15,11 +15,11 @@ function convertRestaurantsToCategories(RestaurantsList) {
     }
     return collection;
   }, []);
-  console.log(RestaurantsList);
+  console.log(restaurantList);
   console.log(newDataShape);
 }
 
-function makeYourOptionsObject(data) {
+function makeYourOptionsObject(datapointsFromRestaurantsList) {
   // set your chart configuration here!
   
   CanvasJS.addColorSet('customColorSet1', [
@@ -50,18 +50,18 @@ const chart = new CanvasJS.Chart("chartContainer", {
       type: 'bar',
       name: 'restaurants',
       axisYType: 'secondary',
-      dataPoints: data
+      dataPoints: datapointsFromRestaurantsList
     }]
   });
 }
 
-function runThisWithResultsFromServer(results) {
+function runThisWithResultsFromServer(jsonFromServer) {
   console.log('jsonFromServer', jsonFromServer);
   sessionStorage.setItem('restaurantList', JSON.stringify(jsonFromServer)); // don't mess with this, we need it to provide unit testing support
   // Process your restaurants list
   // Make a configuration object for your chart
   // Instantiate your chart
-  const reorganizedData = convertRestaurantsToCategories(results);
+  const reorganizedData = convertRestaurantsToCategories(jsonFromServer);
   const options = makeYourOptionsObject(reorganizedData);
   const chart = new CanvasJS.Chart('chartContainer', options);
   chart.render();
