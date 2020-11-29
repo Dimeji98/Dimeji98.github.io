@@ -4,7 +4,60 @@
 import express from 'express';
 import dotenv from 'dotenv';
 import fetch from 'node-fetch';
+import sqlite3 from 'sqlite3';
+import pkg from 'sqlite';
+const { open } = pkg;
 dotenv.config();
+
+const dbSettings = {
+  filename: './tmp/database.db',
+  driver: sqlite3.Database,
+};
+async function databaseInitialize(dbSettings) {
+  try {
+    const db = new sqlite3.Database(dbSettings.filename);
+    db.exec('CREATE TABLE IF NOT EXISTS food (name, category, inspection_date, inspection_results, city, state, zip, owner, type)')
+
+    const data = foodDataFetcher();
+    console.log(data)
+   }
+  catch (e) {
+    console.log("Error loading Database");
+
+  }
+}
+var returnlist= []
+
+async function foodDataFetcher() {
+  try {
+    const url = "https://data.princegeorgescountymd.gov/resource/umjn-t2iz.json";
+    const response = await fetch(url);
+    returnlist = await response.json();
+    return returnlist
+    console.log(returnlist);
+
+  } catch (err) {
+    console.error(err);
+  }
+}
+
+
+
+
+
+async function databaseRetriever(db) {
+  const result = await db.all(`SELECT category, COUNT(restaurant_name) FROM restaurants GROUP BY category`);
+  return result;
+}
+
+
+
+foodDataFetcher();
+
+databaseInitialize(dbSettings);
+
+
+
 
 const app = express();
 const port = process.env.PORT || 3000;
@@ -18,6 +71,11 @@ app.use((req, res, next) => {
   res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
   next();
 });
+
+
+
+
+
 
 app.route('/api')
   .get((req, res) => {
@@ -34,6 +92,18 @@ app.route('/api')
     res.json(json);
   });
 
-app.listen(port, () => {
-  console.log(`Example app listening on port ${port}!`);
-});
+  app.route('/sql')
+  .get((req, res) => {
+    console.log('GET detected');
+  })
+  .post(async (req, res) => {
+    console.log('POST request detected');
+    console.log('Form data in res.body', req.body);
+    // This is where the SQL retrieval function will be:
+    // Please remove the below variable
+		const db = new sqlite3.Database(dbSettings.filename);;
+    const output = await databaseRetriever(db);
+    // This output must be converted to SQL
+    res.json(output);
+  });
+
