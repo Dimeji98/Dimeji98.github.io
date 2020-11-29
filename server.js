@@ -13,35 +13,53 @@ const dbSettings = {
   filename: './tmp/database.db',
   driver: sqlite3.Database,
 };
+
 async function databaseInitialize(dbSettings) {
   try {
     const db = new sqlite3.Database(dbSettings.filename);
     db.exec('CREATE TABLE IF NOT EXISTS food (name, category, inspection_date, inspection_results, city, state, zip, owner, type)')
-
-    const data = foodDataFetcher();
-    console.log(data)
+    db.close();
+    var data
+    data = foodDataFetcher();
+    // dataInput(data)
    }
   catch (e) {
     console.log("Error loading Database");
 
   }
 }
-var returnlist= []
 
 async function foodDataFetcher() {
   try {
     const url = "https://data.princegeorgescountymd.gov/resource/umjn-t2iz.json";
-    const response = await fetch(url);
-    returnlist = await response.json();
-    return returnlist
-    console.log(returnlist);
+	  const response = await fetch(url);
+
+	return (response.json())
 
   } catch (err) {
     console.error(err);
   }
 }
 
+ /* 
+  async function dataInput(data) {
+  try {
+const db = new sqlite3.Database(dbSettings.filename);
+for (var i = 0, l = data.length; i < l; i++) {
+    db.exec(`INSERT INTO food (name, category, inspection_date, inspection_results, city, state, zip, owner, type) VALUES (data.name, data.category, data.inspection_date, data.inspection_results, data.city, data.state, data.zip, data.owner, data.type)`);
+  }
+	db.close();	
+  }
 
+	catch(e) {
+		console.log('Error on insertion');
+		console.log(e);
+		}
+}
+   
+   );
+  
+  */
 
 
 
@@ -72,15 +90,13 @@ app.use((req, res, next) => {
   next();
 });
 
-
-
-
-
-
 app.route('/api')
-  .get((req, res) => {
+  .get(async (req, res) => {
     console.log('GET request detected');
-    res.send(`Lab 5 for ${process.env.NAME}`);
+    const data = await fetch('https://data.princegeorgescountymd.gov/resource/umjn-t2iz.json');
+    const json = await data.json();
+    console.log('data from fetch', json);
+    res.json(json);
   })
   .post(async (req, res) => {
     console.log('POST request detected');
@@ -91,7 +107,6 @@ app.route('/api')
     console.log('data from fetch', json);
     res.json(json);
   });
-
   app.route('/sql')
   .get((req, res) => {
     console.log('GET detected');
@@ -101,9 +116,13 @@ app.route('/api')
     console.log('Form data in res.body', req.body);
     // This is where the SQL retrieval function will be:
     // Please remove the below variable
-		const db = new sqlite3.Database(dbSettings.filename);;
+		const db = await open(dbSettings);
     const output = await databaseRetriever(db);
     // This output must be converted to SQL
     res.json(output);
   });
 
+
+app.listen(port, () => {
+  console.log(`Example app listening on port ${port}!`);
+});

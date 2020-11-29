@@ -1,23 +1,4 @@
-function convertRestaurantsToCategories(restaurantList) {
-  // process your restaurants here!
-    const newDataShape = restaurantList.reduce((collection, item, i) => {
-    // for each item, check if we have a category for that item already
-    const findCat = collection.find((findItem) => findItem.label === item.category);
-    
-    if (!findCat) {
-      collection.push({
-        label: item.category,
-        y: 1
-      });
-    } else {
-      const position = collection.findIndex(el => el.label === item.category);
-      collection[position].y += 1;
-    }
-    return collection;
-  }, []);
-  console.log(restaurantList);
-  console.log(newDataShape);
-}
+
 
 function makeYourOptionsObject(datapointsFromRestaurantsList) {
   // set your chart configuration here!
@@ -61,8 +42,8 @@ function runThisWithResultsFromServer(jsonFromServer) {
   // Process your restaurants list
   // Make a configuration object for your chart
   // Instantiate your chart
-  const reorganizedData = convertRestaurantsToCategories(jsonFromServer);
-  const options = makeYourOptionsObject(reorganizedData);
+  
+  const options = makeYourOptionsObject(jsonFromServer);
   const chart = new CanvasJS.Chart('chartContainer', options);
   chart.render();
 }
